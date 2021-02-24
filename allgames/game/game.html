@@ -1,0 +1,260 @@
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script type="text/javascript" src="/js/lib/dummy.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+
+  <style id="compiled-css" type="text/css">
+      #stack {
+    width: 130px;
+    height: 260px;
+    border: solid 1px black;
+    border-top: 0px;
+}
+
+.brick {
+    width: 11px;
+    height: 11px;
+    border: solid 1px white;
+    background: white;
+    float: left;
+}
+.brick.on {
+    background: black;
+}
+.brick.now {
+    background: green;
+}
+
+    /* EOS */
+  </style>
+
+  <script id="insert"></script>
+
+
+    <script src="/js/stringify.js?434d1e0d451c0b5e763ada9a381bf0dc008ed70a" charset="utf-8"></script>
+    <script>
+      const customConsole = (w) => {
+        const pushToConsole = (payload, type) => {
+          w.parent.postMessage({
+            console: {
+              payload: stringify(payload),
+              type:    type
+            }
+          }, "*")
+        }
+
+        w.onerror = (message, url, line, column) => {
+          // the line needs to correspond with the editor panel
+          // unfortunately this number needs to be altered every time this view is changed
+          line = line - 70
+          if (line < 0){
+            pushToConsole(message, "error")
+          } else {
+            pushToConsole(`[${line}:${column}] ${message}`, "error")
+          }
+        }
+
+        let console = (function(systemConsole){
+          return {
+            log: function(){
+              let args = Array.from(arguments)
+              pushToConsole(args, "log")
+              systemConsole.log.apply(this, args)
+            },
+            info: function(){
+              let args = Array.from(arguments)
+              pushToConsole(args, "info")
+              systemConsole.info.apply(this, args)
+            },
+            warn: function(){
+              let args = Array.from(arguments)
+              pushToConsole(args, "warn")
+              systemConsole.warn.apply(this, args)
+            },
+            error: function(){
+              let args = Array.from(arguments)
+              pushToConsole(args, "error")
+              systemConsole.error.apply(this, args)
+            },
+            system: function(arg){
+              pushToConsole(arg, "system")
+            },
+            clear: function(){
+              systemConsole.clear.apply(this, {})
+            },
+            time: function(){
+              let args = Array.from(arguments)
+              systemConsole.time.apply(this, args)
+            },
+            assert: function(assertion, label){
+              if (!assertion){
+                pushToConsole(label, "log")
+              }
+
+              let args = Array.from(arguments)
+              systemConsole.assert.apply(this, args)
+            }
+          }
+        }(window.console))
+
+        window.console = { ...window.console, ...console }
+
+        console.system("Running fiddle")
+      }
+
+      if (window.parent){
+        customConsole(window)
+      }
+    </script>
+</head>
+<body>
+    <div class="score">score: <span id="result">0</span></div>
+  
+  <div id="stack">
+    <div data-y="0" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="1" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="2" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="3" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="4" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="5" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="6" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="7" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="8" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="9" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="10" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="11" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="12" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="13" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="14" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick now"></div><div data-x="5" class="brick now"></div><div data-x="6" class="brick now"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="15" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick now"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="16" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="17" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="18" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+    <div data-y="19" class="line">
+        <div data-x="0" class="brick"></div><div data-x="1" class="brick"></div><div data-x="2" class="brick"></div><div data-x="3" class="brick"></div><div data-x="4" class="brick"></div><div data-x="5" class="brick"></div><div data-x="6" class="brick"></div><div data-x="7" class="brick"></div><div data-x="8" class="brick"></div><div data-x="9" class="brick"></div>
+    </div>
+</div>
+
+    <script type="text/javascript">//<![CDATA[
+
+
+var fs = "1111:01|01|01|01*011|110:010|011|001*110|011:001|011|010*111|010:01|11|01:010|111:10|11|10*11|11*010|010|011:111|100:11|01|01:001|111*01|01|11:100|111:11|10|10:111|001", now = [3,0], pos = [4,0];
+var gP = function(x,y) { return document.querySelector('[data-y="'+y+'"] [data-x="'+x+'"]'); };
+var draw = function(ch, cls) {
+    var f = fs.split('*')[now[0]].split(':')[now[1]].split('|').map(function(a){return a.split('')});
+    for(var y=0; y<f.length; y++)
+        for(var x=0; x<f[y].length; x++)
+            if(f[y][x]=='1') {
+                if(x+pos[0]+ch[0]>9||x+pos[0]+ch[0]<0||y+pos[1]+ch[1]>19||gP(x+pos[0]+ch[0],y+pos[1]+ch[1]).classList.contains('on')) return false;
+                gP(x+pos[0]+ch[0], y+pos[1]+ch[1]).classList.add(cls!==undefined?cls:'now');
+            }
+    pos = [pos[0]+ch[0], pos[1]+ch[1]];
+}
+var deDraw = function(){ if(document.querySelectorAll('.now').length>0) deDraw(document.querySelector('.now').classList.remove('now')); }
+var check = function(){
+	for(var i=0; i<20; i++)
+		if(document.querySelectorAll('[data-y="'+i+'"] .brick.on').length == 10) 
+			return check(roll(i), document.querySelector('#result').innerHTML=Math.floor(document.querySelector('#result').innerHTML)+10);
+};
+var roll = function(ln){ if(false !== (document.querySelector('[data-y="'+ln+'"]').innerHTML = document.querySelector('[data-y="'+(ln-1)+'"]').innerHTML) && ln>1) roll(ln-1); };
+window.addEventListener('keydown', kdf = function(e){
+    if(e.keyCode==38&&false!==(now[1]=((prv=now[1])+1)%fs.split('*')[now[0]].split(':').length) && false===draw([0,0], undefined, deDraw())) draw([0,0],undefined, deDraw(), now=[now[0],prv]);
+    if((e.keyCode==39||e.keyCode==37)&&false===draw([e.keyCode==39?1:-1,0],undefined,deDraw())) draw([0,0],undefined,deDraw());
+    if(e.keyCode == 40)
+        if(false === draw([0,1], undefined, deDraw())) {
+            if(draw([0,0], 'on', deDraw())||true) check();
+            if(false === draw([0,0], undefined, now = [Math.floor(Math.random()*fs.split('*').length),0], pos = [4,0])) { 
+				toV=-1; 
+				alert('Your score: '+document.querySelector('#result').innerHTML); 
+			}
+        }
+});
+toF = function() {
+    kdf({keyCode:40});
+    setTimeout(function(){if(toV>=0)toF();}, toV=toV>0?toV-0.5:toV);
+}
+toF(toV = 500);
+
+
+  //]]></script>
+
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "kFxja"
+      }], "*")
+    }
+
+    // always overwrite window.name, in case users try to set it manually
+    window.name = "result"
+  </script>
+
+    <script>
+      let allLines = []
+
+      window.addEventListener("message", (message) => {
+        if (message.data.console){
+          let insert = document.querySelector("#insert")
+          allLines.push(message.data.console.payload)
+          insert.innerHTML = allLines.join(";\r")
+
+          let result = eval.call(null, message.data.console.payload)
+          if (result !== undefined){
+            console.log(result)
+          }
+        }
+      })
+    </script>
+
+
+
+</body>
