@@ -32,7 +32,7 @@ a{
   right: 60%;
   top:-1%;
   /* top: 0px; */
-  border: 1px solid #000000;
+  border-right: 2px solid #000000;
   border-left: 2px solid #000000;
   background: #524E4E;
   
@@ -67,7 +67,7 @@ left: 40%;
 right: 50%;
 top:-1%;
 /* top: 0px; */
-border: 1px solid #000000;
+border-right: 2px solid #000000;
 background: #524E4E;
 
 }
@@ -103,7 +103,7 @@ background: #524E4E;
  /* top: 0px; */
  
  background: #524E4E;
- border: 1px solid #000000;
+ border-right: 2px solid #000000;
  }
  .competitive_link
  {
@@ -135,7 +135,6 @@ left: 60%;
 right: 30%;
 top:-1%;
 /* top: 0px; */
-border: 1px solid #000000;
 border-right: 2px solid #000000;
 background: #524E4E;
 
