@@ -1,19 +1,163 @@
-/*#navbar {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 9999;
-    display: block;
-    margin: 0;
-    width: 100%;
-    min-width: 1024px;
-    height: 48px;
-    max-height: 44px;
-    background: rgba(0,0,0,0.92);
-    font-size: 17px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+html {
+    height: 100%; /* Высота веб-страницы */
+    background:#060606
+          no-repeat ;
+    -moz-background-size: 100%; /* Firefox 3.6+ */
+    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: 100%; /* Opera 9.6+ */
+    background-size: 100%; /* Современные браузеры */ /* Путь к графическому файлу с фоном */
+    color: #fff; /* Белый цвет текста */
+   }
+   li 
+   {
+      list-style-type: none; /* Убираем маркеры */
+      }
+a{
+    text-decoration: none;
 }
+   #navbar{
+     position: fixed;
+  width: 100%;
+  height: 54px;
+  left: 0%;
+  top: 0%;
+  background: #3D3A3A;
+   }
+
+  .games
+  {
+  position: absolute;
+  height: 100%;
+  left: 30%;
+  right: 60%;
+  top:-1%;
+  /* top: 0px; */
+  border: 1px solid #000000;
+  border-left: 2px solid #000000;
+  background: #524E4E;
+  
+  }
+  .games_link
+  {
+    width: 127.22px;
+    height: 54px;
+  }
+   .games_text_box
+   {
+       width: 100%;
+       height: 100%;
+  
+   }
+   .games_text
+   {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+   }
+
+.rating
+{
+position: absolute;
+height: 100%;
+left: 40%;
+right: 50%;
+top:-1%;
+/* top: 0px; */
+border: 1px solid #000000;
+background: #524E4E;
+
+}
+.rating_link
+{
+  width: 127.22px;
+  height: 54px;
+}
+ .rating_text_box
+ {
+     width: 100%;
+     height: 100%;
+
+ }
+ .rating_text
+ {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 20px;
+  text-align: center;
+  color: #FFFFFF;
+ }
+
+ .competitive
+ {
+ position: absolute;
+ height: 100%;
+ left: 50%;
+ right: 40%;
+ top:-1%;
+ /* top: 0px; */
+ 
+ background: #524E4E;
+ border: 1px solid #000000;
+ }
+ .competitive_link
+ {
+   width: 127.22px;
+   height: 54px;
+ }
+  .competitive_text_box
+  {
+      width: 100%;
+      height: 100%;
+ 
+  }
+  .competitive_text
+  {
+   font-family: Roboto;
+   font-style: normal;
+   font-weight: normal;
+   font-size: 17px;
+   line-height: 20px;
+   text-align: center;
+   color: #FFFFFF;
+  }
+
+  .profile
+{
+position: absolute;
+height: 100%;
+left: 60%;
+right: 30%;
+top:-1%;
+/* top: 0px; */
+border: 1px solid #000000;
+border-right: 2px solid #000000;
+background: #524E4E;
+
+}
+.profile_link
+{
+  width: 127.22px;
+  height: 54px;
+}
+ .profile_text_box
+ {
+     width: 100%;
+     height: 100%;
+
+ }
+ .profile_text
+ {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 20px;
+  text-align: center;
+  color: #FFFFFF;
+ }
