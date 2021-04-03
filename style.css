@@ -15,6 +15,8 @@ html {
 a{
     text-decoration: none;
 }
+
+
      #navbar{
      position: fixed;
   width: 100%;
@@ -36,7 +38,7 @@ a{
   border-right: 2px solid #000000;
   border-left: 2px solid #000000;
   background: #524E4E;
-  display: inline-block;
+
   
   }
  
@@ -45,8 +47,9 @@ a{
      top:0%;
        width: 100%;
        height: 100%;
-       display: inline-block;
+
    }
+
    .games_text
    {
      width: 100%;
@@ -62,8 +65,31 @@ a{
     color: #FFFFFF;
    }
 
+   .games_content
+   {
+       /* margin-left: 20%; */
+       width: 99.7%;
+   }
 
-
+   .content_box
+   {
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    display: inline-block;
+   }
+   .content_text
+   {
+    margin:1em auto;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 100%;
+    line-height: 100%;
+    text-align: center;
+    color: #524E4E;
+   }
+   .content_box:hover .content_text{color:#000000}
 
 games_content
 {
@@ -100,7 +126,6 @@ top:0%;
 /* top: 0px; */
 border-right: 2px solid #000000;
 background: #524E4E;
-
 }
 
  .rating_text_box
@@ -125,6 +150,8 @@ background: #524E4E;
   color: #FFFFFF;
  }
 
+ .rating:hover .rating_text_box {background-color: #3e8e41;}
+
  .competitive
  {
  position: absolute;
@@ -137,11 +164,7 @@ background: #524E4E;
  background: #524E4E;
  border-right: 2px solid #000000;
  }
- .competitive_link
- {
-   width: 127.22px;
-   height: 54px;
- }
+
   .competitive_text_box
   {
      top:0%;
@@ -163,6 +186,8 @@ background: #524E4E;
    text-align: center;
    color: #FFFFFF;
   }
+
+  .competitive:hover .competitive_text_box {background-color: #3e8e41;}
 
   .profile
 {
@@ -198,6 +223,7 @@ background: #524E4E;
   color: #FFFFFF;
  }
 
+ .profile:hover .profile_text_box {background-color: #3e8e41;}
 
 .leg_shoot
 {
