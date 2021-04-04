@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="newStyle.css" rel="stylesheet" type="text/css" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <nav id="navbar">
+       <li class="logo">
+            <a class="logo_link" href="./index.html">
+            <img src="mainpaint2.png" width="54" height="54">
+            </a>
+          </li>
+        <ul class="nav_list">
+          <li class="games">
+            <a class="games_link" href="./games.html">
+            <div class="games_text_box">
+                <div class="games_text">Игры</div>
+            </div>
+            </a>
+            <div class="games_content">
+               <a href="#"><div class="content_box"><div class="content_text">Тетрис</div></div></a>
+               <a href="#"><div class="content_box"><div class="content_text">Змейка</div></div></a>
+               <a href="#"><div class="content_box"><div class="content_text">2048</div></div></a>
+               <a href="#"><div class="content_box"><div class="content_text">Dino jumps</div></div></a>
+               <a href="#"><div class="content_box"><div class="content_text">Пинг-понг</div></div></a>
+               <a href="#"><div class="content_box"><div class="content_text">Гонки</div></div></a>
+               <a href="#"><div class="content_box"><div class="content_text">Стрелялка</div></div></a> 
+            </div>  
+          </li>
+          <li class="rating">
+            <a class="rating_link" href="./rating.html">
+            <div class="rating_text_box">
+                <p class="rating_text">Рейтинг</p>
+            </div>
+            </a>
+          </li>
+          <li class="competitive">
+            <a class="competitive_link" href="./competitive.html">
+            <div class="competitive_text_box">
+                <p class="competitive_text">Соревнования</p>
+            </div>
+            </a>
+          </li>
+          <li class="profile">
+            <a class="profile_link" href="./login.html">
+            <div class="profile_text_box">
+                <p class="profile_text">Профиль</p>
+            </div>
+            </a>
+          </li>
+        </ul>
+    </nav>
+<div class="container">
+		<form class="registration">
+			<h1>Регистрация</h1>
+
+			<label for="username" >
+        
+				<span >Имя пользователя</span>
+        
+        <div class="tst1">
+				<input type="text" id="username" minlength="3" placeholder=" " required>
+        </div>
+				<ul class="input-requirements">
+          <li>  </li>
+				</ul>
+			</label>
+
+			<label for="password">
+				<span>Пароль</span>
+
+        <div class="tst1">
+				<input type="password" id="password" 
+						maxlength="100" minlength="8" placeholder=" " required>
+        </div>
+				<ul class="input-requirements">
+					<li> </li>
+				</ul>
+			</label>
+
+			<label for="password_repeat">
+				<span>Повторите пароль</span>
+        <div class="tst1">
+				<input type="password" id="password_repeat" 
+          maxlength="100" minlength="8" placeholder=" " required>
+        </div>
+        <ul class="input-requirements">
+					<li> </li>
+				</ul> 
+			</label>
+
+			<br>
+
+			<input type="submit">	
+
+		</form>
+	</div>
+  <script src="newScript.js"></script>
+ </body>
+</html>
