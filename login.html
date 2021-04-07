@@ -59,17 +59,23 @@
 		<form class="registration">
 			<h1>Вход</h1>
 
-			<label for="username">
+			<label for="username" >
+        
 				<span >Имя пользователя</span>
-
-				<input type="text" id="username">
-
+        
+        <div class="tst1">
+				<input type="text" id="username" minlength="3" placeholder=" " required>
+        </div>
+	
 			</label>
 
 			<label for="password">
 				<span>Пароль</span>
 
-				<input type="password" id="password" >	
+        <div class="tst1">
+				<input type="password" id="password1" 
+						maxlength="100" minlength="8" placeholder=" " required>
+        </div>
 			</label>
 
 			<br>

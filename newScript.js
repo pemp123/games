@@ -13,6 +13,8 @@ function CustomValidation() {
 	this.validityChecks = [];
 }
 
+var Activ_flag = false;
+
 CustomValidation.prototype = {
 	// addInvalidity: function(message) {
 	// 	this.invalidities.push(message);
@@ -28,23 +30,59 @@ CustomValidation.prototype = {
 			// if (isInvalid) {
 			// 	this.addInvalidity(this.validityChecks[i].invalidityMessage);
 			// } 
-      
 			var requirementElement = this.validityChecks[i].element;
-      
+         
+      if(this.validityChecks[i].element2.id == 'username' && this.validityChecks[i].element2.value.length != 0)
+        {
+          var ret = this.validityChecks[i].element2.value;
+          var test = '';
+          test += ret.charAt(0).toUpperCase();
+          for(var j=1;j<this.validityChecks[i].element2.value.length ; j++)
+            test += ret.charAt(j).toLowerCase();
+          this.validityChecks[i].element2.value=test;
+          if(this.validityChecks[i].element2.value == 'Admin')
+          {
+            if(document.querySelectorAll('#same_names a').length == 0)
+            {
+              document.getElementById('same_names').style.display = 'block';
+              document.getElementById('same_names').innerHTML += 
+        
+              '<div id="tmp"><a href="#"><div class="same_box"><div class="content_text1">Тетрис</div></div></a> <a href="#"><div class="same_box"><div class="content_text1">Змейка</div></div></a> <a href="#"><div class="same_box"><div class="content_text1">2048</div></div></a></div>'
+            }
+          }
+          else
+          {
+            document.getElementById('same_names').style.display = 'block';
+            document.getElementById('tmp').remove();
+            //li.remove(this);
+            // li[i].onclick = function()
+            // {
+            //   this.parentNode.removeChild(this);
+            // }
+          }
+        }
+
+
+
       if(this.validityChecks[i].invalidityMessage == 'Пароли не совпадают')
       {
          if (requirementElement) {
           if (isInvalid) {
             if(this.validityChecks.length == 1)
+            {
               flag = 0;
+              Activ_flag = true;
+            }
+            if(Activ_flag)
+            {
             this.validityChecks[i].element2.classList.add('invalid');
             this.validityChecks[i].element2.classList.remove('valid');
             requirementElement.classList.add('invalid');
             requirementElement.innerText = this.validityChecks[i].invalidityMessage
             requirementElement.classList.remove('valid');
-            
+            }
           }
-          else 
+          else
           {
             this.validityChecks[0].element2.classList.add('valid');
             this.validityChecks[0].element2.classList.remove('invalid');
@@ -99,6 +137,11 @@ var usernameValidityChecks = [
 		invalidityMessage: 'Минимум 3 символа в длину',
 		element: document.querySelector('label[for="username"] .input-requirements li:nth-child(1)'),
     element2: document.querySelector('label[for="username"] .tst1 input:nth-child(1)')
+    //var val = document.querySelector('label[for="username"] .tst1 input:nth-child(1)').value;
+    
+
+    //if(.match(/[A-Z]/g))
+    //   input.value[0] = 1;
 	},
 	{
 		isInvalid: function(input) {
@@ -165,6 +208,16 @@ var passwordRepeatValidityChecks = [
 	}
 ];
 
+var emailValidityChecks = [
+  {
+  isInvalid: function(input) {
+			return !input.value.match(/[@]/g);
+		},
+    invalidityMessage: 'Должен содержать @',
+    element: document.querySelector('label[for="e-mail"] .input-requirements li:nth-child(1)'),
+    element2: document.querySelector('label[for="e-mail"] .tst1 input:nth-child(1)')
+  }
+]
 
 
 /* ----------------------------
@@ -203,6 +256,7 @@ function checkInput(input) {
 var usernameInput = document.getElementById('username');
 var passwordInput = document.getElementById('password');
 var passwordRepeatInput = document.getElementById('password_repeat');
+var emailInput = document.getElementById('mail');
 
 usernameInput.CustomValidation = new CustomValidation();
 usernameInput.CustomValidation.validityChecks = usernameValidityChecks;
@@ -212,6 +266,11 @@ passwordInput.CustomValidation.validityChecks = passwordValidityChecks;
 
 passwordRepeatInput.CustomValidation = new CustomValidation();
 passwordRepeatInput.CustomValidation.validityChecks = passwordRepeatValidityChecks;
+
+emailInput.CustomValidation = new CustomValidation();
+emailInput.CustomValidation.validityChecks = emailValidityChecks;
+
+
 
 
 
@@ -231,8 +290,28 @@ for (var i = 0; i < inputs.length; i++) {
 	});
 }
 
-// submit.addEventListener('click', function() {
-// 	for (var i = 0; i < inputs.length; i++) {
-// 		checkInput(inputs[i]);
-// 	}
-// });
+document.querySelector('div[id="im_button"]').onclick = function() {
+if(document.querySelector('label[for="password"] .tst1 input:nth-child(1)').type == 'password')
+{
+  this.querySelector('img[class="eye"]').src = '/eye2.jpg';
+  document.querySelector('label[for="password"] .tst1 input:nth-child(1)').type = 'text';
+}
+else 
+{
+  document.querySelector('label[for="password"] .tst1 input:nth-child(1)').type = 'password';
+  this.querySelector('img[class="eye"]').src = '/eye.jpg';
+}
+}
+
+document.querySelector('div[id="im_button2"]').onclick = function() {
+if(document.querySelector('label[for="password_repeat"] .tst1 input:nth-child(1)').type == 'password')
+{
+  this.querySelector('img[class="eye"]').src = '/eye2.jpg';
+  document.querySelector('label[for="password_repeat"] .tst1 input:nth-child(1)').type = 'text';
+}
+else
+{
+document.querySelector('label[for="password_repeat"] .tst1 input:nth-child(1)').type = 'password';
+this.querySelector('img[class="eye"]').src = '/eye.jpg';
+}
+}
